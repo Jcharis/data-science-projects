@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hepatitis Predictor App</title>
+	 <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.3/css/mdb.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="/">Hepatitis Mortality Predictor</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/dataset">Dataset</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+
+
+    </ul>
+ <!--    <form class="form-inline my-2 my-lg-0" method="POST" action="/predict">
+      <input class="form-control mr-sm-2" type="text" name="namequery" placeholder="" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Predict</button>
+    </form> -->
+  </div>
+</nav>
+<br/>
+<br/>
+<!-- blue #0686e4 -->
+<div class="jumbotron" style="background:#2d2d2d;color:#fff">
+    <div class="container">
+      <h2 class="display-3">Hepatitis Mortality Prediction</h2>
+      <p>Using Machine Learning </p>
+      <p><a class="btn btn-success waves-effect btn-lg" href="/" role="button">Refresh &raquo;</a></p>
+    </div>
+  </div>
+<br/>
+
+<div class="container" >
+<form method="POST" action="/predict">
+		
+		<!-- Clean Layout -->
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5">
+		          <div class="card mb-10 shadow-sm" id="custom_card">
+		          	 <!-- Feature Starts here -->
+		          	<div class="form-group">
+		          	  <label for="age">Age:</label>
+		          	  <input type="number" class="form-control form-control-sm" id="age" name="age" min=7 value="7">
+		          	</div>
+		          	<!-- Feature Ends here -->
+		          	<!-- Feature Starts here -->
+		          	<div>
+		          	 <div class="form-check-inline">
+		          	 	<label class="form-check-label">
+		          	 	<h6>Gender</h6>
+		          	 </label>
+		          	 </div>
+		          	<div class="form-check-inline">
+		          	  <label class="form-check-label">
+		          	    <input type="radio" class="form-check-input" name="sex" value="1" checked="checked">Male
+		          	  </label>
+		          	</div>
+		          	<div class="form-check-inline">
+		          	  <label class="form-check-label">
+		          	    <input type="radio" class="form-check-input" name="sex" value="2">Female
+		          	  </label>
+		          	</div>
+		          	</div>
+		          	<!-- Feature Ends here -->
+		          	<!-- Feature Starts here -->
+		          	<div>
+		          	 <div class="form-check-inline">
+		          	 	<label class="form-check-label">
+		          	 	<h6>Do You Take Steriods?</h6
+		          	 		>
+		          	 </label>
+		          	 </div>
+		          	<div class="form-check-inline">
+		          	  <label class="form-check-label">
+		          	    <input type="radio" class="form-check-input" name="steroid" value="1" checked="checked">No
+		          	  </label>
+		          	</div>
+		          	<div class="form-check-inline">
+		          	  <label class="form-check-label">
+		          	    <input type="radio" class="form-check-input" name="steroid" value="2">Yes
+		          	  </label>
+		          	</div>
+		          	</div>
+		          	<!-- Feature Ends here -->
+		          	<!-- Feature Starts here -->
+		          	<div>
+		          	 <div class="form-check-inline">
+		          	 	<label class="form-check-label">
+		          	 	<h6>Do You Take Antivirals?</h6>
+		          	 </label>
+		          	 </div>
+		          	<div class="form-check-inline">
+		          	  <label class="form-check-label">
+		          	    <input type="radio" class="form-check-input" name="antivirals" value="1" checked="checked">No
+		          	  </label>
+		          	</div>
+		          	<div class="form-check-inline">
+		          	  <label class="form-check-label">
+		          	    <input type="radio" class="form-check-input" name="antivirals" value="2">Yes
+		          	  </label>
+		          	</div>
+		          	</div>
+		          	<!-- Feature Ends here -->
+		          	<!-- Feature Starts here -->
+		          	<div>
+		          	 <div class="form-check-inline">
+		          	 	<label class="form-check-label">
+		          	 	<h6>Do You Have Fatigue?</h6>
+		          	 </label>
+		          	 </div>
+		          	<div class="form-check-inline">
+		          	  <label class="form-check-label">
+		          	    <input type="radio" class="form-check-input" name="fatigue" value="1" checked="checked">No
+		          	  </label>
+		          	</div>
+		          	<div class="form-check-inline">
+		          	  <label class="form-check-label">
+		          	    <input type="radio" class="form-check-input" name="fatigue" value="2">Yes
+		          	  </label>
+		          	</div>
+		          	</div>
+		          	<!-- Feature Ends here -->
+		          	<!-- Feature Starts here -->
+		          	<div>
+		          	 <div class="form-check-inline">
+		          	 	<label class="form-check-label">
+		          	 	<h6>Presence of Spider Naevi</h6>
+		          	 </label>
+		          	 </div>
+		          	<div class="form-check-inline">
+		          	  <label class="form-check-label">
+		          	    <input type="radio" class="form-check-input" name="spiders" value="1" checked="checked">No
+		          	  </label>
+		          	</div>
+		          	<div class="form-check-inline">
+		          	  <label class="form-check-label">
+		          	    <input type="radio" class="form-check-input" name="spiders" value="2">Yes
+		          	  </label>
+		          	</div>
+		          	</div>
+		          	<!-- Feature Ends here -->
+		          	<!-- Feature Starts here -->
+		          	<div>
+		          	 <div class="form-group">
+		          	  <label for="varices">Presence of Varices:</label>
+		          	  <select class="form-control" id="varices" name='varices'>
+		          	    <option value="1">No</option>
+		          	    <option value="2">Yes</option>
+		          	  </select>
+		          	</div>
+		          	</div>
+		          	<!-- Feature Ends here -->
+					<!-- Feature Starts here -->
+					<div>
+					 <div class="form-group">
+					  <label for="varices">Presence of Ascites:</label>
+					  <select class="form-control" id="ascites" name='ascites'>
+					    <option value="1">No</option>
+					    <option value="2">Yes</option>
+					  </select>
+					</div>
+					</div>
+					<!-- Feature Ends here -->
+				</div>
+			</div>
+
+
+
+			<div class="col-md-5">
+		          <div class="card mb-10 shadow-sm" id="custom_card2">
+		          	
+		          	 <!-- Feature Starts here -->
+		          	<div class="form-group">
+		          	  <label for="bilirubin">Bilirubin:</label>
+		          	  <input type="number" class="form-control form-control-sm" id="bilirubin" name="bilirubin" min=0 value='0' max="9">
+		          	</div>
+		          	<!-- Feature Ends here -->
+		          	 <!-- Feature Starts here -->
+		          	<div class="form-group">
+		          	  <label for="alk_phosphate">Alk Phostate:</label>
+		          	  <input type="number" class="form-control form-control-sm" id="alk_phosphate" name="alk_phosphate" min=0 value='0' max="296">
+		          	</div>
+		          	<!-- Feature Ends here -->
+		          	 <!-- Feature Starts here -->
+		          	<div class="form-group">
+		          	  <label for="sgot">SGOT:</label>
+		          	  <input type="number" class="form-control form-control-sm" id="sgot" name="sgot" min=0 value='0' max="650">
+		          	</div>
+		          	<!-- Feature Ends here -->
+		          	 <!-- Feature Starts here -->
+		          	<div class="form-group">
+		          	  <label for="albumin">Albumin:</label>
+		          	  <input type="number" class="form-control form-control-sm" id="albumin" name="albumin" min=0 value='0' max="7.0">
+		          	</div>
+		          	<!-- Feature Ends here -->
+		          	 <!-- Feature Starts here -->
+		          	<div class="form-group">
+		          	  <label for="protime">Protime:</label>
+		          	  <input type="number" class="form-control form-control-sm" id="protime" name="protime" min=0 value='0' max="100">
+		          	</div>
+		          	<!-- Feature Ends here -->
+		          	<!-- Feature Starts here -->
+		          	<div>
+		          	 <div class="form-group">
+		          	  <label for="histology1">Histology</label>
+		          	  <select class="form-control" id="histology1" name="histology">
+		          	    <option value="1">No</option>
+		          	    <option value="2">Yes</option>
+		          	  </select>
+		          	</div>
+		          	</div>
+		          	<!-- Feature Ends here -->
+					
+				</div>
+			</div>
+		</div>
+		</div>
+		<!-- Clean Layout ends here -->	
+<button type="reset" class="btn btn-outline-success">Reset</button>
+<button type="submit" class="btn btn-primary">Predict</button>
+</form>
+</div>
+<br/>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-6" >
+          <div class="card mb-10 shadow-sm" id="custom_card">
+          	<h4>Result</h4>
+          	<h6>Original Data</h6>
+          	<pre>{{ sample_result }}</pre>
+          	<br/>
+
+			
+		</div>
+	</div>
+
+
+
+	<div class="col-md-6" >
+          <div class="card mb-10 shadow-sm" id="custom_card2" style="background-color:#2d2d2d; color:white;padding:5px">
+          	<h4>Prediction</h4>
+			<div class="alert alert-primary" role="alert">
+			  {{ prediction }}
+			</div>
+			<hr/>
+			<h6>Probability Score</h6>
+			<p>{{ pred_probalility_score }}</p>
+			
+		</div>
+	</div>
+</div>
+	<br/>
+  <br/>
+  <br/>
+
+</div>
+
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.3/js/mdb.min.js"></script>
+
+</body>
+</html>
